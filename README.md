@@ -1,1 +1,1 @@
-# CMPE-256---Food-Recommendation
+# CMPE-256 Food Recommendation System
