@@ -1,3 +1,15 @@
 /datapreprocessing/.ipynb_checkpoints/
 /.idea/
 /data/
+.DS_Store
+__pycache__/
+/dataset/ingr_map.pkl
+/dataset/interactions_test.csv
+/dataset/interactions_train.csv
+/dataset/interactions_validation.csv
+/dataset/RAW_interactions.csv
+/dataset/RAW_recipes.csv
+/dataset/recipes.csv
+/dataset/users.csv
+.ipynb_checkpoints/
+
