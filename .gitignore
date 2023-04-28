@@ -6,3 +6,4 @@ __pycache__/
 /dataset
 .ipynb_checkpoints/
 *.sav
+*.pkl

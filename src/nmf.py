@@ -42,7 +42,7 @@ from scipy.sparse import csr_matrix
 from sklearn.decomposition import NMF
 
 # create a random matrix of size 1000 x 50 which contains 60% zeros
-X = np.random.rand(1000000, 50)
+X = np.random.rand(1000, 50)
 
 X[X < 0.6] = 0
 
@@ -62,3 +62,12 @@ print("W @ H: ", W @ H)
 
 with open('nmf_model.pkl', 'wb') as f:
     pickle.dump(model, f)
+
+row_index = 0  # for example
+selected_row = W[row_index, :]
+
+similarities = W.dot(selected_row)
+similar_indices = np.argsort(-similarities)[:10]
+similar_rows = X[similar_indices, :]
+
+print("similar_rows: ", similar_rows)
