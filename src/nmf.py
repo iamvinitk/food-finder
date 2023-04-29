@@ -38,24 +38,36 @@
 import pickle
 
 import numpy as np
-from scipy.sparse import csr_matrix
+import pandas as pd
 from sklearn.decomposition import NMF
 
-# create a random matrix of size 1000 x 50 which contains 60% zeros
-X = np.random.rand(1000, 50)
+data = pd.read_csv('../dataset/temp.csv')
 
-X[X < 0.6] = 0
+X = data.drop(['recipe_id'], axis=1)
 
-X_sparse = csr_matrix(X)
+# find the values in X that are smaller than 0
+print(X.shape)
+print(X.head(4))
 
-model = NMF(n_components=100, init='random', random_state=0, max_iter=5000, solver='mu', l1_ratio=0.5, verbose=3)
+n_components = 2
 
-W = model.fit_transform(X_sparse)
+# create an NMF object and fit the data
+model = NMF(n_components=n_components, init='random', random_state=0)
+model.fit(X)
+
+# get the factorization matrices
+W = model.transform(X)
 H = model.components_
+
+# print the results
+print("Factorization matrix W:")
+print(W)
+print("Factorization matrix H:")
+print(H)
 
 loss = model.reconstruction_err_
 print("loss: ", loss)
-print("X: ", X)
+print("X: ", X.values)
 print("W @ H: ", W @ H)
 
 # save the model
@@ -68,6 +80,6 @@ selected_row = W[row_index, :]
 
 similarities = W.dot(selected_row)
 similar_indices = np.argsort(-similarities)[:10]
-similar_rows = X[similar_indices, :]
+similar_rows = data.iloc[similar_indices, :]
 
 print("similar_rows: ", similar_rows)
