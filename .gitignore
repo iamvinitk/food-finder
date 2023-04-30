@@ -9,3 +9,8 @@ __pycache__/
 .ipynb_checkpoints/
 *.sav
 *.pkl
+/backend/saved_models/
+/src/recommendation/
+/src/model.zip
+.idea
+/backend/recommendation/
