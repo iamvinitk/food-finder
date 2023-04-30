@@ -9,8 +9,6 @@ model = keras.models.load_model('recommendation')
 
 recipe2recipe_encoded = json.load(open('recommendation/recipe2recipe_encoded.json'))
 
-print(recipe2recipe_encoded)
-
 recipe_embedding = model.recipe_embedding.get_weights()[0]
 print(recipe_embedding.shape)
 

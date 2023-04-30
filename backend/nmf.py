@@ -9,7 +9,7 @@ def get_nmf_recommendations(dataset, recipe_id):
     recipe_id = int(recipe_id)
     print(dataset[dataset['recipe_id'] == recipe_id].index)
     recipe_index = dataset[dataset['recipe_id'] == recipe_id].index[0]
-
+    print("recipe_index", recipe_index)
     # get the factor values of the recipe
     recipe_factors = W[recipe_index]
 

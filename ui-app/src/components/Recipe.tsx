@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { type RecipeData } from "../datatypes";
 
 const Recipe = ({ recipe: data }: { recipe: RecipeData }): JSX.Element => {
@@ -76,6 +76,12 @@ export const Recipes = ({
 }: {
   recipes: RecipeData[];
 }): JSX.Element => {
+  const [recipeData, setRecipeData] = useState<RecipeData[]>(recipes);
+
+  useEffect(() => {
+    setRecipeData(recipes);
+  }, [recipes]);
+
   return (
     <div className="grid grid-cols-12">
       {recipes.map((recipe, index) => (
