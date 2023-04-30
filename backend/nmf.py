@@ -19,15 +19,20 @@ def get_nmf_recommendations(dataset, recipe_id):
     # get the indices of the top 10 most similar recipes (excluding itself)
     top10_indices = np.argsort(similarity)[-101:-1]
 
+    # reverse the order of the indices
+    top10_indices = top10_indices[::-1]
+
     # print the top 10 most similar recipes
     x = dataset.iloc[top10_indices]
-
+    # add the similarity score to the dataframe
+    x['similarity'] = similarity[top10_indices]
     # remove the recipe itself and repeated recipe_ids
     x = x[x['recipe_id'] != recipe_id]
     x = x.drop_duplicates(subset=['recipe_id'])
 
     # select the top 10 most similar recipes
     x = x.head(10)
+    print(x['similarity'])
     return x.to_dict(orient='records')
 
 

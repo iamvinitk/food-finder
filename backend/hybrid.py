@@ -24,7 +24,7 @@ def get_similar_recipes_collab(recipe_id):
     recipe_index = np.where(y == recipe_id)[0][0]
     recipe_vector = X[recipe_index]
     # search for the nearest neighbors
-    k = 100
+    k = 1000
     D, I = index.search(np.array([recipe_vector]), k)
     recipe_ids = y[I[0]]
     unique_recipe_ids = np.unique(recipe_ids)
@@ -56,7 +56,8 @@ def get_similar_recipes_hybrid(df, recipe_id, n=10):
     print("Collab: ", len(collab))
     print("SVD: ", len(svd))
     # find the intersection of the two lists
-    similar_recipes = list(set(collab) & set(svd))
+    # similar_recipes = list(set(collab) & set(svd))
+    similar_recipes = list(set(collab))
     similar_recipes = [int(x) for x in similar_recipes]
     print("Intersection: ", len(similar_recipes))
     similar_recipes = similar_recipes[:n]

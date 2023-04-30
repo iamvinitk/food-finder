@@ -10,3 +10,4 @@ __pycache__/
 /backend/saved_models/
 /src/recommendation/
 /src/model.zip
+.idea
