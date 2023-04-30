@@ -1,4 +1,4 @@
-absl-py==1.4.0
+piabsl-py==1.4.0
 aiofiles==22.1.0
 aiosqlite==0.19.0
 anyascii==0.3.2
@@ -160,3 +160,7 @@ wrapt==1.14.1
 y-py==0.5.9
 ypy-websocket==0.8.2
 zipp==3.15.0
+
+pip~=23.1.2
+wheel~=0.40.0
+setuptools~=67.7.2

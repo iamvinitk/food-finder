@@ -4,6 +4,8 @@
 .DS_Store
 __pycache__/
 /dataset
+/HybridRecommendations/venv
+/models/.ipynb_checkpoints
 .ipynb_checkpoints/
 *.sav
 *.pkl
