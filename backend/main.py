@@ -1,6 +1,7 @@
 import pandas as pd
 from flask import Flask, request
 
+from cdl import get_similar_recipes_cdl
 from hybrid import get_similar_recipes_hybrid
 from nmf import get_nmf_recommendations
 
@@ -26,6 +27,10 @@ def hello_world(model_name):
 
     if model_name == "nmf":
         recommendations = get_nmf_recommendations(df, recipe_id=recipe_id)
+        return recommendations
+
+    if model_name == "cdl":
+        recommendations = get_similar_recipes_cdl(df, recipe_id=recipe_id)
         return recommendations
     return f'Hello, World! {model_name} {recipe_id}'
 

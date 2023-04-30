@@ -61,7 +61,7 @@ def get_similar_recipes_hybrid(df, recipe_id, n=10):
     similar_recipes = [int(x) for x in similar_recipes]
     print("Intersection: ", len(similar_recipes))
     similar_recipes = similar_recipes[:n]
-    top_n_recipe_data = df[df.user_id.isin(similar_recipes)].drop_duplicates(subset=['recipe_id'])
+    top_n_recipe_data = df[df.recipe_id.isin(similar_recipes)].drop_duplicates(subset=['recipe_id'])
 
     # replace NaN with None
     top_n_recipe_data = top_n_recipe_data.where(pd.notnull(top_n_recipe_data), None)
